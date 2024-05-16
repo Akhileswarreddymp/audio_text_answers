@@ -4,9 +4,9 @@ import openai
 import asyncio
 import time  # Importing the time module to use time.sleep()
 from fastapi.middleware.cors import CORSMiddleware
-
+ 
 app = FastAPI()
-
+ 
 # Allow requests from all origins (replace "*" with your frontend domain)
 app.add_middleware(
     CORSMiddleware,
@@ -15,10 +15,13 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
-# app = FastAPI()
+ 
+# Shared state to control listening
+is_listening = True
  
 @app.get("/get_result", tags=["get_result"])
 async def recognize_voice_and_get_result():
+    global is_listening
     recognizer = sr.Recognizer()
     recognizer.dynamic_energy_threshold = False
     recognizer.energy_threshold = 4000
@@ -27,7 +30,10 @@ async def recognize_voice_and_get_result():
     with sr.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source, duration=0.5)
         print("Speak something...")
-        audio = await asyncio.to_thread(recognizer.listen, source, phrase_time_limit=5)
+        audio = await asyncio.to_thread(recognizer.listen, source, phrase_time_limit=20)
+        if not is_listening:
+            print("Listening was stopped.")
+            return "Listening was stopped."
         try:
             # Google Web Speech API for recognition
             text = await asyncio.to_thread(recognizer.recognize_google, audio)
@@ -52,9 +58,9 @@ async def recognize_voice_and_get_result():
                 """
                 prompt = f"""You're Narahari Daggupatti, a DevOps and AI engineer with extensive experience, based on this resume summary:
                 {resume_summary}
-                
+               
                 I'm the recruiter asking questions to assess your skills and expertise. Respond to any technical or non-technical question in a clear, concise, and conversational manner, as if we're speaking face-to-face, showcasing your achievements, skills, and problem-solving abilities.
-                
+               
                 Here's my first question: {text}"""
                 # Generate text using the chat completion endpoint
                 response = await asyncio.to_thread(
@@ -70,9 +76,6 @@ async def recognize_voice_and_get_result():
                 response_content = response['choices'][0]['message']['content'].strip()
                 print(response_content)
                 return response_content
-                # for char in response_content:
-                #     print(char, end='', flush=True)
-                #     time.sleep(0.01)  # Delay to mimic real-time typing
  
             except Exception as error:
                 print("Error with OpenAI API:", error)
@@ -81,3 +84,16 @@ async def recognize_voice_and_get_result():
             print("Sorry, could not understand audio.")
         except sr.RequestError as e:
             print("Could not request results from Google Web Speech API:", e)
+ 
+@app.get("/stop_listening", tags=["control"])
+async def stop_listening():
+    global is_listening
+    is_listening = False
+    return {"message": "Listening stopped"}
+ 
+@app.get("/start_listening", tags=["control"])
+async def start_listening():
+    global is_listening
+    is_listening = True
+    return {"message": "Listening started"}
+ 
