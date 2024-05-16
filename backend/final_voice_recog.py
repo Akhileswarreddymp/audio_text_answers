@@ -4,8 +4,14 @@ import openai
 import asyncio
 import time  # Importing the time module to use time.sleep()
 from fastapi.middleware.cors import CORSMiddleware
+from voice_conversion import router as voice_reco
+from get_response import router as get_resp
+
  
 app = FastAPI()
+app.include_router(voice_reco)
+app.include_router(get_resp)
+
  
 # Allow requests from all origins (replace "*" with your frontend domain)
 app.add_middleware(
