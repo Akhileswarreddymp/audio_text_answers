@@ -7,8 +7,23 @@ recognizer = sr.Recognizer()
 mic = sr.Microphone()
 is_listening = True
  
-async def recognize_speech_from_mic():
+# async def recognize_speech_from_mic():
+#     global is_listening
+    
+            # if not is_listening:
+            #     print("Final captured text:", complete_voice)
+            #     return complete_voice
+ 
+@router.get("/stop-recognition", tags=["Voice"])
+async def stop_listening_command():
     global is_listening
+    is_listening = False
+    print("Listening stopped.")
+ 
+@router.get("/start-recognition", tags=["Voice"])
+async def start_listening_command():
+    global is_listening
+    is_listening = True
     global complete_voice
     complete_voice = ""
    
@@ -29,23 +44,6 @@ async def recognize_speech_from_mic():
             continue
         print("Final captured text:", complete_voice)
         return complete_voice
-            # if not is_listening:
-            #     print("Final captured text:", complete_voice)
-            #     return complete_voice
- 
-@router.get("/stop-recognition", tags=["Voice"])
-async def stop_listening_command():
-    global is_listening
-    is_listening = False
-    print("Listening stopped.")
- 
-@router.get("/start-recognition", tags=["Voice"])
-async def start_listening_command():
-    global is_listening
-    is_listening = True
-    out = await recognize_speech_from_mic()
-    print("Complete captured text:", out)
-    return out
  
 # if __name__ == "__main__":
 #     asyncio.run(start_listening_command())

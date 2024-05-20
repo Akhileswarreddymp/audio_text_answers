@@ -30,38 +30,31 @@ async def generate_humanlike_response(request : prompt_text):
     
         # Adjusted prompt to simulate a dynamic, interactive job interview
         resume_summary = """
-        IRFAN
-        - Mobile: 9686498545
-        - Email: irfanronaldo37@gmail.com
+        Akhileswar Reddy
+        - Mobile: 8217220343
+        - Email: akhileswarreddymp9177@gmail.com
         - Location: Bengaluru, India
-        - Career Objective: Having 4 years of experience in IT Infrastructure with DevOps and AWS Management as a DevOps Engineer, proficient in Git, Maven, Jenkins, Docker, Kubernetes, Ansible, Terraform, and AWS, Shell scripting.
+        - Career Objective: Having 3 years of experience in Python backend Development using FastAPI, proficient in Git, FastApi, Python, Redis, Mongodb, ElasticSearch, React js, Html and css.
         - Work Experience:
-        - DevOps Engineer | Deloitte (Jan 2020 - Present, Bengaluru, India)
-        - Project: tms (Texas municipal league) (Sep 2022 - June 2023)
-        - Project Description: Lead the migration process of servers & data from the on-premises data center to AWS Cloud. Automated CI/CD pipelines using Jenkins, managed Docker containers, and Kubernetes for orchestration.
+        - Software Engineer | KKS Tech Solutions Pvt Ltd (feb 2021 - feb 2024, Bengaluru, India)
+        - Project: Retail outlet automation for IOCL, IOML and BPCL
+        - Project Description: Lead end to end backend and front end development using Python, FastAPI and react js where we have completely automated the outlets by building alerting and interlocing mechanism for reducing the frudelent activities in retail outlet with auto price mechanism as well.
         - Education:
-        - B.Tech (Electrical), Chaitanya Bharathi Institute Of Technology (2015)
+        - B.Tech (ECE), Sri Krishnadevaraya University COllege of Engineering and Technology
         - Technical Skills:
-        - SCM Tools: GIT, SVN
-        - Build Tools: MAVEN
-        - Continuous Integration Tools: Jenkins
-        - Configuration Management Tool: Ansible
-        - Containerization Tool: Docker
-        - Containerization Orchestration Tool: Kubernetes, Helm, Argocd
-        - Infrastructure Tool: Terraform
-        - Monitoring Tool: Grafana, Kibana, Prometheus
-        - Cloud Platform: AWS (EC2, S3, VPC, IAM, Cloud Watch, EBS, Route53, ELB, Auto Scaling)
+        - Python, FastAPI, Elasticsearch, Mongodb, Redis, Html,css,React Js, ThingsBoard,RabbitMq.
+        - SCM Tools: GIT
+        - Monitoring Tool: Kibana
         - Scripting: Shell Scripting, Python
         - Languages:
         - English
-        - Interests: Cloud Computing, Infrastructure Automation, Continuous Integration/Continuous Deployment
         """
-        prompt = f"""You're IRFAN, a DevOps Engineer with extensive experience in AWS and infrastructure automation, based on this resume summary:
+        prompt = f"""You're Akhileswar Redy, a FullStack Developer with extensive experience in Python,FastAPi and React, based on this resume summary:
         {resume_summary}
     
-        I'm the recruiter asking questions to assess your skills and expertise. Respond to any technical or non-technical question in a clear, concise, and conversational manner, as if we're speaking face-to-face, showcasing your achievements, skills, and problem-solving abilities.and use butler english like daily conversation,just give me the answer in butler english,i want the answer like clear story telling way,
-    
-        Here's my first question: {request.prompt_text}"""
+        I'm the recruiter asking questions to assess your skills and expertise. Respond to any technical or non-technical question in normal indian slang English in a concise manner, and conversational manner, as if we're speaking face-to-face, showcasing your achievements, skills, and problem-solving abilities based on question.respond with out using any large vocabulary, complicated words and complicated technologies in the speech,and give the answer short and concise.
+   
+        answer my questions as you are a human: {request.prompt_text}"""
     
         # Use OpenAI to generate a response considering the limited conversation history                  
         response = await asyncio.to_thread(
