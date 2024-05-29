@@ -7,14 +7,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from voice_conversion import router as voice_reco
 from get_response import router as get_resp
 from upload_resume import router as update_resumes
+from web_socket_injection import router as web_socket 
+from Authentication import router as Authentication
 
- 
 app = FastAPI()
 app.include_router(voice_reco)
 app.include_router(get_resp)
 app.include_router(update_resumes)
+app.include_router(web_socket)
+app.include_router(Authentication)
 
- 
 # Allow requests from all origins (replace "*" with your frontend domain)
 app.add_middleware(
     CORSMiddleware,

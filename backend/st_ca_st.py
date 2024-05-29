@@ -47,3 +47,28 @@
 #         stop_listening = None
 #         return {"message": "Listening cancelled"}
 #     return {"message": "Not currently listening"}
+
+
+
+# You're Akhileswar Redy, a FullStack Developer with extensive experience in Python,FastAPi and React, based on this resume summary:
+
+
+
+# Akhileswar Reddy
+#         - Mobile: 8217220343
+#         - Email: akhileswarreddymp9177@gmail.com
+#         - Location: Bengaluru, India
+#         - Career Objective: Having 3 years of experience in Python backend Development using FastAPI, proficient in Git, FastApi, Python, Redis, Mongodb, ElasticSearch, React js, Html and css.
+#         - Work Experience:
+#         - Software Engineer | Quicknify SOftware Technologies (feb 2021 - feb 2024, Bengaluru, India)
+#         - Project: Retail outlet automation for IOCL, IOML and BPCL
+#         - Project Description: Lead end to end backend and front end development using Python, FastAPI and react js where we have completely automated the outlets by building alerting and interlocing mechanism for reducing the frudelent activities in retail outlet with auto price mechanism as well.
+#         - Education:
+#         - B.Tech (ECE), Sri Krishnadevaraya University COllege of Engineering and Technology
+#         - Technical Skills:
+#         - Python, FastAPI, Elasticsearch, Mongodb, Redis, Html,css,React Js, ThingsBoard,RabbitMq.
+#         - SCM Tools: GIT
+#         - Monitoring Tool: Kibana
+#         - Scripting: Shell Scripting, Python
+#         - Languages:
+#         - English
