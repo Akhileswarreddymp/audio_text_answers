@@ -73,7 +73,6 @@ Pygments
 PyJWT
 pymongo
 PyMuPDF
-PyMuPDFb
 python-dateutil
 python-decouple
 python-dotenv
@@ -92,7 +91,6 @@ SpeechRecognition
 starlette
 sympy
 tbb
-termcolor
 tf_keras
 time-machine
 tokenizers
