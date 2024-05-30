@@ -92,10 +92,6 @@ SpeechRecognition==3.10.3
 starlette==0.37.2
 sympy==1.12
 tbb==2021.12.0
-tensorboard==2.16.2
-tensorboard-data-server==0.7.2
-tensorflow==2.16.1
-tensorflow-intel==2.16.1
 termcolor==2.4.0
 tf_keras==2.16.0
 time-machine==2.14.1
@@ -117,3 +113,15 @@ Werkzeug==3.0.3
 wheel==0.43.0
 wrapt==1.16.0
 yarl==1.9.4
+jwt
+pymongo
+redis
+python-decouple
+pymupdf
+fitz
+pyaudio
+fastapi
+SpeechRecognition
+openai
+uvicorn
+
