@@ -6,9 +6,6 @@ from decouple import config
 
 router = APIRouter(prefix="/api")
 
-# Set your API key
-api_key = config("api_key")
-openai.api_key = api_key
  
 # Initialize conversation history
 conversation_history = []
