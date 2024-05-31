@@ -1,11 +1,14 @@
 from fastapi import APIRouter
 import speech_recognition as sr
 import asyncio
- 
+
 router = APIRouter(prefix="/api")
 recognizer = sr.Recognizer()
 
-
+if not sr.Microphone.list_microphone_names():
+    print("No microphone found. Please ensure that a microphone is connected.")
+    exit()
+    
 mic = sr.Microphone()
 is_listening = True
  
