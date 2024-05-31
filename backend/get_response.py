@@ -6,7 +6,7 @@ from models import *
 router = APIRouter(prefix="/api")
 
 # Set your API key
-api_key = "sk-proj-jHfKUQCv6l6bDXK0On3nT3BlbkFJQnr29YfxYrWQvfaPcN13"
+api_key = ""
 openai.api_key = api_key
  
 # Initialize conversation history
@@ -15,7 +15,7 @@ conversation_history = []
 async def generate_humanlike_response(request : prompt_text):
     print("prompt=====>",request.prompt_text)
     try:
-        api_key = "sk-proj-jHfKUQCv6l6bDXK0On3nT3BlbkFJQnr29YfxYrWQvfaPcN13"
+        api_key = ""
         openai.api_key = api_key
         
         # Initialize conversation history
